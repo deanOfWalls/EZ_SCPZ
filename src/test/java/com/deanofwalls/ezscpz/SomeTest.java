@@ -1,4 +1,4 @@
-package com.yourname.CRUD_TEMPLATE;
+package com.deanofwalls.ezscpz;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

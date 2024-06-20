@@ -34,7 +34,7 @@ After obtaining the template (either by downloading the ZIP or cloning and remov
 This template includes a Dockerfile for easy deployment using Docker. To use it:
 
 1. Ensure the Java version in the Dockerfile matches your project requirements.
-2. Replace `com.yourname.CRUD_TEMPLATE.MainApplication` in the ENTRYPOINT command with your project's main class.
+2. Replace `com.deanofwalls.ezscpz.EzScpzApplication` in the ENTRYPOINT command with your project's main class.
 3. If your project doesn't use a Maven wrapper (`mvnw`), update the Dockerfile to use your local Maven installation.
 4. Optionally, adjust the Maven build command to include or exclude test execution as per your needs.
 5. Build and run your Docker image for a containerized version of your application.

@@ -1,0 +1,75 @@
+.
+├── Dockerfile
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── project_structure.txt
+├── README.md
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       ├── deanofwalls
+│   │   │       │   └── ezscpz
+│   │   │       │       ├── config
+│   │   │       │       │   └── SomeConfig.java
+│   │   │       │       ├── controller
+│   │   │       │       │   └── SomeController.java
+│   │   │       │       ├── EzScpzApplication.java
+│   │   │       │       ├── model
+│   │   │       │       │   └── SomeModel.java
+│   │   │       │       ├── repository
+│   │   │       │       │   └── SomeRepository.java
+│   │   │       │       └── service
+│   │   │       │           └── SomeService.java
+│   │   │       └── yourname
+│   │   └── resources
+│   │       ├── application.properties
+│   │       └── static
+│   │           ├── css
+│   │           │   └── styles.css
+│   │           ├── index.html
+│   │           ├── js
+│   │           │   └── script.js
+│   │           └── templates
+│   └── test
+│       └── java
+│           └── com
+│               ├── deanofwalls
+│               │   └── ezscpz
+│               │       └── SomeTest.java
+│               └── yourname
+└── target
+    ├── classes
+    │   ├── application.properties
+    │   ├── com
+    │   │   └── deanofwalls
+    │   │       └── ezscpz
+    │   │           ├── config
+    │   │           │   └── SomeConfig.class
+    │   │           ├── controller
+    │   │           │   └── SomeController.class
+    │   │           ├── EzScpzApplication.class
+    │   │           ├── model
+    │   │           │   └── SomeModel.class
+    │   │           ├── repository
+    │   │           │   └── SomeRepository.class
+    │   │           └── service
+    │   │               └── SomeService.class
+    │   └── static
+    │       ├── css
+    │       │   └── styles.css
+    │       ├── index.html
+    │       └── js
+    │           └── script.js
+    ├── generated-sources
+    │   └── annotations
+    ├── generated-test-sources
+    │   └── test-annotations
+    └── test-classes
+        └── com
+            └── deanofwalls
+                └── ezscpz
+                    └── SomeTest.class
+
+45 directories, 28 files
