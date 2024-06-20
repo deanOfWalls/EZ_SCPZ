@@ -1,20 +1,88 @@
-/* Add your CSS styling here */
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: rgb(21, 21, 21);
+    color: white;
 }
 
-h1 {
-    color: #333;
+.logo {
+    width: 70%;
+    max-width: 350px;
+    height: auto;
+    margin-top: 30px;
 }
 
-form {
-    margin-bottom: 20px;
+.buttons {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
 }
 
-input, select, button {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
+.button {
+    margin: 15px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.button img {
+    width: 100px;
+    height: auto;
+}
+
+.gallery-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.main-display {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.link-container {
+    position: fixed;
+    bottom: 10px;
+    color: white;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+#deanWallsLink {
+    color: white;
+    text-decoration: none;
+}
+
+#deanWallsLink span {
+    display: inline-block;
+    animation: wave 1s linear infinite;
+    margin-left: 5px;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25%, 75% {
+        transform: translateY(-10px);
+    }
 }

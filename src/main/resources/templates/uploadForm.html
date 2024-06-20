@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Photo Upload and Gallery</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(21, 21, 21); /* Updated background color */
+            color: white; /* Set text color */
+        }
+        .logo {
+            width: 90%; /* Larger logo size */
+            max-width: 350px;
+            height: auto;
+            margin-top: 30px; /* Increased margin */
+        }
+        .buttons {
+            margin: 30px; /* Increased margin */
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            margin: 15px; /* Increased margin */
+            padding: 15px; /* Larger button size */
+            cursor: pointer;
+        }
+        .button img {
+            width: 100px; /* Larger button icon */
+            height: auto;
+        }
+        .gallery-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-display {
+            width: 100%; /* Adjusted main display width */
+            max-width: 900px; /* Maximum width for main display */
+            margin-top: 15px; /* Offset from top */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border: 1px solid white; /* Added border for visibility */
+            position: relative;
+        }
+        .main-display img {
+            width: 100%;
+            height: auto;
+            max-height: calc(60vh - 30px); /* Adjusted maximum height */
+            object-fit: contain;
+            margin-top: 15px; /* Offset from top */
+        }
+        .swiper-container {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-slide img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            z-index: 10;
+        }
+        .swiper-button-next {
+            right: 0;
+        }
+        .swiper-button-prev {
+            left: 0;
+        }
+        .link-container {
+            position: fixed;
+            bottom: 10px;
+            color: white;
+            font-size: 20px; /* Larger font size */
+            white-space: nowrap; /* Prevent line break */
+        }
+        #deanWallsLink {
+            color: white;
+            text-decoration: none;
+        }
+        /* Updated wave animation */
+        #deanWallsLink span {
+            display: inline-block;
+            animation: wave 1s linear infinite;
+            margin-left: 5px; /* Space between letters */
+            animation-delay: calc(var(--i) * 0.1s); /* Delay based on index */
+        }
+        @keyframes wave {
+            0% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-5px); /* First peak */
+            }
+            50% {
+                transform: translateY(0); /* Middle position */
+            }
+            75% {
+                transform: translateY(5px); /* Second peak */
+            }
+            100% {
+                transform: translateY(0); /* Back to start */
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="initialView">
+    <h1><img src="/images/ezscpz.png" alt="EzScpZ Logo" class="logo"></h1>
+    <div class="buttons">
+        <div class="button" onclick="document.getElementById('fileInput').click()">
+            <img src="/images/upload.png" alt="Upload Image">
+        </div>
+        <div class="button" onclick="showGallery()">
+            <img src="/images/view.png" alt="View Gallery">
+        </div>
+    </div>
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data" style="display: none;">
+        <input type="file" id="fileInput" name="file" accept="image/*" onchange="document.getElementById('uploadForm').submit()" />
+    </form>
+</div>
+<div class="gallery-container" id="gallerySection" style="display: none;">
+    <div class="main-display" id="mainDisplay"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="filmReel"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+<div class="link-container">
+    <a href="https://deanwalls.com" target="_blank" id="deanWallsLink">
+        <span style="--i:1">w</span>
+        <span style="--i:2">w</span>
+        <span style="--i:3">w</span>
+        <span style="--i:4">.</span>
+        <span style="--i:5">d</span>
+        <span style="--i:6">e</span>
+        <span style="--i:7">a</span>
+        <span style="--i:8">n</span>
+        <span style="--i:9">w</span>
+        <span style="--i:10">a</span>
+        <span style="--i:11">l</span>
+        <span style="--i:12">l</span>
+        <span style="--i:13">s</span>
+        <span style="--i:14">.</span>
+        <span style="--i:15">c</span>
+        <span style="--i:16">o</span>
+        <span style="--i:17">m</span>
+    </a>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    function showGallery() {
+        document.getElementById('initialView').style.display = 'none';
+        document.getElementById('gallerySection').style.display = 'block';
+    }
+
+    function displayImage(url) {
+        document.getElementById('mainDisplay').innerHTML = `<img src="${url}" />`;
+    }
+
+    window.onload = function() {
+        fetch('/gallery')
+            .then(response => response.json())
+            .then(data => {
+                const filmReel = document.getElementById('filmReel');
+                data.forEach(imageUrl => {
+                    const slide = document.createElement('div');
+                    slide.className = 'swiper-slide';
+                    slide.innerHTML = `<img src="${imageUrl}" onclick="displayImage('${imageUrl}')" />`;
+                    filmReel.appendChild(slide);
+                });
+
+                const swiper = new Swiper('.swiper-container', {
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    slidesPerView: 'auto',
+                    centeredSlides: true,
+                });
+
+                if (data.length > 0) {
+                    displayImage(data[0]);
+                }
+            })
+            .catch(error => console.error('Error fetching gallery:', error));
+    };
+</script>
+</body>
+</html>

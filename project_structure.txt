@@ -2,6 +2,29 @@
 ├── Dockerfile
 ├── mvnw
 ├── mvnw.cmd
+├── node_modules
+│   ├── cors
+│   │   ├── CONTRIBUTING.md
+│   │   ├── HISTORY.md
+│   │   ├── lib
+│   │   │   └── index.js
+│   │   ├── LICENSE
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── object-assign
+│   │   ├── index.js
+│   │   ├── license
+│   │   ├── package.json
+│   │   └── readme.md
+│   ├── .package-lock.json
+│   └── vary
+│       ├── HISTORY.md
+│       ├── index.js
+│       ├── LICENSE
+│       ├── package.json
+│       └── README.md
+├── package.json
+├── package-lock.json
 ├── pom.xml
 ├── project_structure.txt
 ├── README.md
@@ -12,26 +35,26 @@
 │   │   │       ├── deanofwalls
 │   │   │       │   └── ezscpz
 │   │   │       │       ├── config
-│   │   │       │       │   └── SomeConfig.java
 │   │   │       │       ├── controller
-│   │   │       │       │   └── SomeController.java
+│   │   │       │       │   └── FileUploadController.java
 │   │   │       │       ├── EzScpzApplication.java
 │   │   │       │       ├── model
-│   │   │       │       │   └── SomeModel.java
 │   │   │       │       ├── repository
-│   │   │       │       │   └── SomeRepository.java
 │   │   │       │       └── service
-│   │   │       │           └── SomeService.java
 │   │   │       └── yourname
 │   │   └── resources
 │   │       ├── application.properties
-│   │       └── static
-│   │           ├── css
-│   │           │   └── styles.css
-│   │           ├── index.html
-│   │           ├── js
-│   │           │   └── script.js
-│   │           └── templates
+│   │       ├── static
+│   │       │   ├── css
+│   │       │   │   └── styles.css
+│   │       │   ├── images
+│   │       │   │   ├── ezscpz.png
+│   │       │   │   ├── upload.png
+│   │       │   │   └── view.png
+│   │       │   └── js
+│   │       │       └── gallery.js
+│   │       └── templates
+│   │           └── index.html
 │   └── test
 │       └── java
 │           └── com
@@ -39,37 +62,52 @@
 │               │   └── ezscpz
 │               │       └── SomeTest.java
 │               └── yourname
-└── target
-    ├── classes
-    │   ├── application.properties
-    │   ├── com
-    │   │   └── deanofwalls
-    │   │       └── ezscpz
-    │   │           ├── config
-    │   │           │   └── SomeConfig.class
-    │   │           ├── controller
-    │   │           │   └── SomeController.class
-    │   │           ├── EzScpzApplication.class
-    │   │           ├── model
-    │   │           │   └── SomeModel.class
-    │   │           ├── repository
-    │   │           │   └── SomeRepository.class
-    │   │           └── service
-    │   │               └── SomeService.class
-    │   └── static
-    │       ├── css
-    │       │   └── styles.css
-    │       ├── index.html
-    │       └── js
-    │           └── script.js
-    ├── generated-sources
-    │   └── annotations
-    ├── generated-test-sources
-    │   └── test-annotations
-    └── test-classes
-        └── com
-            └── deanofwalls
-                └── ezscpz
-                    └── SomeTest.class
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   ├── com
+│   │   │   └── deanofwalls
+│   │   │       └── ezscpz
+│   │   │           ├── controller
+│   │   │           │   └── FileUploadController.class
+│   │   │           └── EzScpzApplication.class
+│   │   ├── static
+│   │   │   ├── css
+│   │   │   │   └── styles.css
+│   │   │   ├── images
+│   │   │   │   ├── ezscpz.png
+│   │   │   │   ├── upload.png
+│   │   │   │   └── view.png
+│   │   │   └── js
+│   │   │       └── gallery.js
+│   │   └── templates
+│   │       └── index.html
+│   ├── EZ_SCPZ-0.0.1-SNAPSHOT.jar
+│   ├── EZ_SCPZ-0.0.1-SNAPSHOT.jar.original
+│   ├── generated-sources
+│   │   └── annotations
+│   ├── generated-test-sources
+│   │   └── test-annotations
+│   ├── maven-archiver
+│   │   └── pom.properties
+│   ├── maven-status
+│   │   └── maven-compiler-plugin
+│   │       ├── compile
+│   │       │   └── default-compile
+│   │       │       ├── createdFiles.lst
+│   │       │       └── inputFiles.lst
+│   │       └── testCompile
+│   │           └── default-testCompile
+│   │               ├── createdFiles.lst
+│   │               └── inputFiles.lst
+│   ├── surefire-reports
+│   │   ├── com.deanofwalls.ezscpz.SomeTest.txt
+│   │   └── TEST-com.deanofwalls.ezscpz.SomeTest.xml
+│   └── test-classes
+│       └── com
+│           └── deanofwalls
+│               └── ezscpz
+│                   └── SomeTest.class
+└── uploads
 
-45 directories, 28 files
+58 directories, 53 files
